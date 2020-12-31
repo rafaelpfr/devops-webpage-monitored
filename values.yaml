@@ -1,7 +1,7 @@
 image:
   registry: rafa73
   repository: static_site
-  tag: latest              # {{ my_tag }}
+  tag: {{ IMAGE_TAG }}
 
 metrics:
   enabled: true
@@ -9,5 +9,4 @@ metrics:
     enabled: true
     interval: 10s         # Interval at which metrics should be scraped
     selector:
-      release: my-prometheus
-
+      release: prometheus
