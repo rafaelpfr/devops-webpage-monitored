@@ -10,16 +10,13 @@ pipeline {
   }
   
   stages{
-    
     stage('Build Docker Image') {
       steps {
         sh 'docker image build -t rafa73/static_site:${IMAGE_TAG} --network=host .'
       }
    }
 
-
     stage('Push image to Docker Hub') {
-
       steps {
         withCredentials([string(credentialsId: 'docker-hub-password', variable: 'dockerHubPassword')]) {
           sh 'docker login -u rafa73 -p ${dockerHubPassword}'
@@ -36,7 +33,7 @@ pipeline {
   
     stage('Ansible Event') {
       steps {
-        ansiblePlaybook credentialsId: 'dev-server', disableHostKeyChecking: true, extras: "-e IMAGE_TAG=${IMAGE_TAG}", installation: 'Ansible-2.9.15', inventory: 'hosts', playbook: 'playbook.yml'
+        ansiblePlaybook credentialsId: 'dev-server', disableHostKeyChecking: true, extras: "-e IMAGE_TAG=${IMAGE_TAG}", installation: 'Ansible-2.9.15', inventory: 'hosts', playbook: 'playbook_charts.yml'
       }
     } 
   }
