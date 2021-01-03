@@ -20,14 +20,14 @@
        chart_ref: prometheus-community/kube-prometheus-stack
        release_namespace: default
 
-   - name: Verify that the application does not exist
+   - name: Verify that there is no nginx (with outdated website) running
      community.kubernetes.helm:
        name: nginx
        chart_ref: bitnami/nginx
        release_namespace: default
        state: absent
 
-   - name: Deploy nginx with static site
+   - name: Deploy nginx with static website
      community.kubernetes.helm:
        name: nginx
        chart_ref: bitnami/nginx
