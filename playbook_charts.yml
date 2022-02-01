@@ -5,30 +5,30 @@
 
   tasks:
    - name: Add bitnami nginx chart repo
-     community.kubernetes.helm_repository:
+     kubernetes.core.helm_repository:
        name: bitnami
        repo_url: "https://charts.bitnami.com/bitnami"
 
    - name: Add prometheus-community chart repo
-     community.kubernetes.helm_repository:
+     kubernetes.core.helm_repository:
        name: prometheus-community
        repo_url: "https://prometheus-community.github.io/helm-charts"
 
    - name: Deploy latest version of Prometheus chart
-     community.kubernetes.helm:
+     kubernetes.core.helm:
        name: prometheus
        chart_ref: prometheus-community/kube-prometheus-stack
        release_namespace: default
 
    - name: Verify that there is no nginx (with outdated website) running
-     community.kubernetes.helm:
+     kubernetes.core.helm:
        name: nginx
        chart_ref: bitnami/nginx
        release_namespace: default
        state: absent
 
    - name: Deploy nginx with static website
-     community.kubernetes.helm:
+     kubernetes.core.helm:
        name: nginx
        chart_ref: bitnami/nginx
        release_namespace: default
