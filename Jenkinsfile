@@ -33,7 +33,7 @@ pipeline {
   
     stage('Ansible Event') {
       steps {
-        ansiblePlaybook credentialsId: 'dev-server', disableHostKeyChecking: true, extras: "-e IMAGE_TAG=${IMAGE_TAG}", installation: 'Ansible-2.9.15', inventory: 'hosts', playbook: 'playbook_charts.yml'
+        ansiblePlaybook credentialsId: 'dev-server', disableHostKeyChecking: true, extras: "-e IMAGE_TAG=${IMAGE_TAG}", installation: 'Ansible-2.9.27', inventory: 'hosts', playbook: 'playbook_charts.yml'
       }
     } 
   }
