@@ -27,7 +27,7 @@ pipeline {
 
     stage('Install community.kubernetes chart') {
        steps {
-         sh 'ansible-galaxy collection install community.kubernetes'
+         sh 'ansible-galaxy collection install kubernetes.core'
        }
     }
   
