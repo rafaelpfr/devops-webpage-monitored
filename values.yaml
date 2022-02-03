@@ -3,10 +3,10 @@ image:
   repository: static_site
   tag: {{ IMAGE_TAG }}
 
-# metrics:
-#   enabled: true
-#   serviceMonitor:
-#     enabled: true
-#     interval: 10s         # Interval at which metrics should be scraped
-#     selector:
-#       release: prometheus
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    interval: 10s         # Interval at which metrics should be scraped
+    selector:
+      release: prometheus
