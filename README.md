@@ -30,13 +30,25 @@ Obs: It was necessary to create a task in the playbook to delete the old nginx h
 3) The Kubernetes Cluster Machine
 - After the first commit to the repository, it's necessary to do a manual Scan on Jenkins so it can obtain the configuration files and perform the build. Subsequent commits will be automatically recognized by Jenkins.
 
+- Add to your /etc/hosts: `<minikube ip>  fusion.com fusion-monitored.com`
+
 ## Result
+- Jenkins Result
+<p align="center">
+  <img src="images/jenkins.png"/>
+</p>
+
+- The page is deployed successfully!
 <p align="center">
   <img src="images/page.png"/>
 </p>
+
+- Grafana login
 <p align="center">
   <img src="images/login.png"/>
 </p>
+
+- We can access cluster metrics through grafana!
 <p align="center">
   <img src="images/prometheus1.png"/>
 </p>
