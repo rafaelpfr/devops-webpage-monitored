@@ -33,3 +33,35 @@
        chart_ref: bitnami/nginx
        release_namespace: default
        values: "{{ lookup('template', 'values.yaml') | from_yaml }}"
+
+   - name: Create an Ingress object
+     kubernetes.core.k8s:
+       state: present
+       definition:
+         apiVersion: networking.k8s.io/v1
+         kind: Ingress
+         metadata:
+           name: nginx-ingress
+           namespace: default
+         spec:
+           rules:
+           - host: "fusion.com"
+             http:
+               paths:
+               - path: "/"
+                 pathType: Prefix
+                 backend:
+                   service:
+                     name: nginx
+                     port:
+                       number: 80
+           - host: "fusion-monitored.com"
+             http:
+               paths:
+               - path: "/"
+                 pathType: Prefix
+                 backend:
+                   service:
+                     name: prometheus-grafana
+                     port:
+                       number: 80
